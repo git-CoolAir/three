@@ -57,7 +57,6 @@ export default {
       this.createScene();
 
       // 添加光源
-
       this.createLights();
 
       // 添加对象
