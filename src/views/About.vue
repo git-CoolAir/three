@@ -57,7 +57,6 @@ export default {
       // let canvas = this.$refs.three;
 
       // 创建场景，相机和渲染器
-
       this.createScene();
 
       // 添加光源
