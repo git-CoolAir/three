@@ -53,10 +53,15 @@ export default {
   },
   methods: {
     initThree() {
+      //创建绘画容器
+      // let canvas = this.$refs.three;
+
       // 创建场景，相机和渲染器
+
       this.createScene();
 
       // 添加光源
+
       this.createLights();
 
       // 添加对象
