@@ -1,23 +1,7 @@
-# three
+# 3D three的场景
 
-## Project setup
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
+主要是用来学习 three.js 的 事例
 ```
 
 ### Customize configuration
