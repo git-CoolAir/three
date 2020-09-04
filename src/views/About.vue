@@ -131,28 +131,29 @@ export default {
       //它会填满整个屏幕
       this.renderer.setSize(this.WIDTH, this.HEIGHT);
 
-      // Enable shadow rendering
+      // 启动阴影渲染
       this.renderer.shadowMap.enabled = true;
 
-      // Add the DOM element of the renderer to the
-      // container we created in the HTML
+      //将渲染的dom节点 添加到 world 标签中
       this.container = document.getElementById("world");
       this.container.appendChild(this.renderer.domElement);
 
-      // Listen to the screen: if the user resizes it
-      // we have to update the camera and the renderer size
+      //当窗口发生改变时, 修改 渲染器节点大小和 摄像机的纵横比
       window.addEventListener("resize", this.handleWindowResize, false);
     },
 
+    //当窗口变化时, 修改参数
     handleWindowResize() {
       // update height and width of the renderer and the camera
       this.HEIGHT = window.innerHeight;
       this.WIDTH = window.innerWidth;
       this.renderer.setSize(this.WIDTH, this.HEIGHT);
       this.camera.aspect = this.WIDTH / this.HEIGHT;
+      //更新投影矩阵
       this.camera.updateProjectionMatrix();
     },
 
+    //设置灯光和阴影
     createLights() {
       // A hemisphere light is a gradient colored light;
       // the first parameter is the sky color, the second parameter is the ground color,
@@ -170,12 +171,12 @@ export default {
       this.shadowLight.castShadow = true;
 
       // define the visible area of the projected shadow
-      this.shadowLight.shadow.camera.left = -400;
+      this.shadowLight.shadow.camera.left = -200;
       this.shadowLight.shadow.camera.right = 400;
-      this.shadowLight.shadow.camera.top = 400;
+      this.shadowLight.shadow.camera.top = 200;
       this.shadowLight.shadow.camera.bottom = -400;
-      this.shadowLight.shadow.camera.near = 1;
-      this.shadowLight.shadow.camera.far = 1000;
+      this.shadowLight.shadow.camera.near = 0;
+      this.shadowLight.shadow.camera.far = 2000;
 
       // define the resolution of the shadow; the higher the better,
       // but also the more expensive and less performant
@@ -440,6 +441,7 @@ export default {
       this.updatePlane();
 
       this.renderer.render(this.scene, this.camera);
+
       requestAnimationFrame(this.loop);
     },
 
@@ -449,7 +451,6 @@ export default {
       this.createPlane();
       this.createSea();
       this.createSky();
-
 
       this.loop();
     },
